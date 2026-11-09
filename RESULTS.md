@@ -15,7 +15,7 @@
 - Actual result: HTTP 500 instead of HTTP 400.
 - Severity: Medium: API returns a server error for a request that should be rejected as a client error.
 ## Part A
-- Step A4, status codes when the other user reads, changes and deletes:
+- Step A4, status codes when the other user reads, changes and deletes: read 404, change 400, delete 400.
 ## Part B
 1.
 2.
