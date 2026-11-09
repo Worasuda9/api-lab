@@ -10,16 +10,6 @@ def test_create_rating(api, auth, pizza_id):
     assert body["pizza_id"] == pizza_id
     assert isinstance(body["id"], int)
 
-@pytest.fixture
-def rating(api, auth, pizza_id):
-    """A rating with 3 stars, made before the test and deleted after it."""
-    new = {"pizza_id": pizza_id, "stars": 3}
-    res = api.post("/api/ratings", json=new, headers=auth)
-    assert res.status_code == 201
-    made = res.json()
-    yield made
-    api.delete(f"/api/ratings/{made['id']}", headers=auth)
-    
 # A saved rating can be read back by its id.
 def test_read_rating(api, auth, rating):
     res = api.get(f"/api/ratings/{rating['id']}", headers=auth)
